@@ -35,6 +35,9 @@ Traits can contain both instance and static members, including both
 methods and properties. In the case of a trait with a static property,
 each class using that trait has its own instance of that property.
 
+A trait may [*implement*](#trait-declarations) one or more [*interfaces*](15-interfaces.md#general),
+each of which defines a contract.
+
 Methods in a trait have full access to all members of any class in which
 that trait is used.
 
@@ -44,7 +47,7 @@ that trait is used.
 
 <pre>
   <i>trait-declaration:</i>
-    trait   <i>name</i>   {   trait-member-declarations<sub>opt</sub></i>   }
+    trait   <i>name</i>  trait-interface-clause<sub>opt</sub>   {   trait-member-declarations<sub>opt</sub></i>   }
 
   <i>trait-member-declarations:</i>
     <i>trait-member-declaration</i>
@@ -56,6 +59,10 @@ that trait is used.
     <i>constructor-declaration</i>
     <i>destructor-declaration</i>
     <i>trait-use-clauses</i>
+
+  <i>trait-interface-clause:</i>
+    implements  <i>qualified-name</i>
+    <i>trait-interface-clause</i>  ,  <i>qualified-name</i>
 </pre>
 
 **Defined elsewhere**
@@ -88,6 +95,9 @@ A trait may contain the following members:
     class in which the trait is used is no longer needed.
 
 If a member has no explicit visibility, `public` is assumed.
+
+A trait must implement each of the methods from all the
+[interfaces](15-interfaces.md#general) specified in *trait-interface-clause*.
 
 **Examples**
 
